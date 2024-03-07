@@ -36,8 +36,9 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### FIGURE 01 CIRCUIT OF INTERFACING ULTRASONIC SENSOR 
 
+![Screenshot 2024-03-07 111359](https://github.com/sakamalesh/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/149148235/6859b827-d4ac-45a1-9164-5f11b04fa28c)
 
-![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
+![Screenshot 2024-03-07 111759](https://github.com/sakamalesh/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/149148235/d3cd9f9c-c0ae-47e1-8f88-2315ae97b686)
 
 
 
@@ -56,7 +57,59 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### PROGRAM 
 
+NAME: KAMALESH S
+DEPT: CSE
+YEAR: Ist
+REG NO: 212223040083
 
+const int trigpin=10;
+const int echopin=9;
+int red=6;
+int green=5;
+long duration;
+float distance;
+void setup()
+{
+  pinMode(trigpin, OUTPUT);
+  pinMode(echopin, INPUT);
+  pinMode(red, OUTPUT);
+  pinMode(green, OUTPUT);
+  Serial.begin(9600);
+   
+}
+
+void loop()
+{
+  digitalWrite(trigpin,LOW);
+  delay(20);
+  digitalWrite(trigpin,HIGH);
+  delay(20);
+  digitalWrite(trigpin,LOW);
+  delay(20);
+  
+  duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance>5)
+  {
+    digitalWrite(red,HIGH);
+    delay(200);
+    digitalWrite(red,LOW);
+    delay(200);
+    
+  }
+  else
+  {
+    digitalWrite(green,HIGH);
+    delay(200);
+    digitalWrite(green,LOW);
+    delay(200);
+  }
+  
+  
+  
+}
 
 
 
@@ -64,12 +117,13 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 ### Distance vs measurement table 
 
 			
- 
+ ![Screenshot 2024-03-07 111536](https://github.com/sakamalesh/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/149148235/919dbdbd-8c0e-4823-8562-498c8a59d2a9)
+
 			
-			
+![Screenshot 2024-03-07 111547](https://github.com/sakamalesh/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/149148235/bfaf2494-6323-4650-b73b-b93d9069f3c0)
+		
 			
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
 
 			
 			
